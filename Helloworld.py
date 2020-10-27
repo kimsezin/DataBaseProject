@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def hello():
-    return 'Hello Web Framework World!'
+    return 'Hello Web Framework World!!'
 
 if __name__=='__main__':
     app.debug = True
