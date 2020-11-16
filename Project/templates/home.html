@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>유기견 보호 센터</title>
+        <style>
+            body { 
+                background-color: #808080;         
+            }
+            #all
+            {
+                margin:10%;
+            }
+            h1
+            {
+                display:inline;
+            }
+            a { 
+                text-decoration: none;
+                color: mediumaquamarine; 
+                font-size:3vw;
+            }
+            a:hover
+            {
+                opacity: 0.5;
+            }
+            img
+            {
+                width:40%;
+                max-width:100%;
+                height:auto;
+            }
+            .image
+            {
+                position:relative;
+                left:10%;
+                
+            }
+            .text1
+            {
+                position: relative;
+                left:6.5em;
+            }
+            .text2
+            {
+                position: relative;
+                left:12em;
+            }
+        </style>
+        
+    <body>
+        <div id="all">
+            <div class="image">
+                <img src="{{url_for('static', filename='image/1.jpg')}}" alt = "No image" />
+                <img src="{{url_for('static', filename='image/2.jpg')}}" alt = "No image" />    
+            </div>
+
+            <a class="text1"  href="{{url_for('static', filename='Get.html')}}">분양자</a>
+            <a class="text2"  href="{{url_for('static', filename='Sell.html')}}">유기견 보호센터</a>
+            </div>
+        </div>
+    </body>
+</html>
