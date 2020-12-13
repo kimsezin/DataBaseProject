@@ -25,41 +25,13 @@ def Client():
         )
         db.commit()
 
-        # items = db.execute(
-        #     'select *'
-        #     ' from Pet'
-        # ).fetchall()
-
-        # Pet_output = ""
-        # for item in items :
-        #     Pet_output += item['Pet_Number']
-        #     Pet_output += item['Species']
-        #     Pet_output += item['Age']
-        #     Pet_output += item['Sex']
-        #     Pet_output += item['Center_Number'] 
-
         db.close()
         return render_template('Pet.html')
     else:
-    # Client_items = db.execute(
-    #     'select Phone_Number, Experience, Have_many, C_age, C_location'
-    #     ' from Client'
-    # ).fetchall()
-   
-    # Client_output = ""
 
-    # for item in Client_items:
-    #     Client_output += item['Phone_Number']
-    #     Client_output += item['Experience']
-    #     Client_output += item['Have_many']
-    #     Client_output += item['C_age']
-    #     Client_output += item['C_location']  
+        return render_template('Client.html')
 
-        db.close()
-
-    return render_template('Client.html')
-
-@app.route("/Center")
+@app.route("/Center", methods=['GET','POST'])
 def Center():
     db = sqlite3.connect('/home/kimsezin/DatabaseProject/Project/PetShop.db')
     db.row_factory = sqlite3.Row
@@ -73,9 +45,8 @@ def Center():
         db.commit()     
 
         db.close() 
-        return render_template('Center.html')
+        return render_template('OK.html')
     else :
-
         LastNumber_item = db.execute(
             'select Center_Number '
             ' from (select Center_Number from Center order by Center_Number desc limit 1)'
@@ -83,23 +54,10 @@ def Center():
         ).fetchone()
     
         LastNumber = ord(LastNumber_item['Center_Number'])-47  
-        # Center_items = db.execute(
-        #     'select Center_Number, Location, Many_Pet, Grade, Pet_Hospital'
-        #     ' from Center'
-        # ).fetchall()
-    
-        # Center_output = ""
-
-        # for item in Center_items:
-        #     Center_output += item['Center_Number']
-        #     Center_output += item['Location']
-        #     Center_output += item['Many_Pet']
-        #     Center_output += item['Grade']
-        #     Center_output += item['Pet_Hospital']
         
         db.close()
 
-    return render_template('Center.html', LastNumber=LastNumber)
+        return render_template('Center.html', LastNumber=LastNumber)
  
 @app.route("/OK")
 def OK():
@@ -107,6 +65,18 @@ def OK():
 
 @app.route("/Pet")
 def Pet():
+    # db = sqlite3.connect('/home/kimsezin/DatabaseProject/Project/PetShop.db')
+    # db.row_factory = sqlite3.Row
+
+    # items = db.execute(
+    #     'select *'
+    #     ' from Pet'
+    # )
+
+    # Pet_List = ""
+    # for item in items :
+    #     Pet_List += item[Pet_Number]
+        
     return render_template('Pet.html')
 if __name__ == "__main__":
     app.debug=True
