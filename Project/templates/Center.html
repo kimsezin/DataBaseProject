@@ -5,11 +5,15 @@
     </head>
     <body>
         <h1>Center Register</h1> <br>
-        Center Number : <input type="text" name="Center Number"> <br>
-        Location : <input type="text" name="Location"><br>
-        Many_Pet : <input type="text" name="Many_Pet"><br>
-        Grade : <input type="text" name="Age"><br>
-        Pet_Hospital : <input type="text" name="Pet_Hospital"><br>
-        <input type='button' value='OK' onClick="location.href='OK'">
+        <form action = "{{url_for('Center', LastNumber=LastNumber)}}" method="POST">
+            Center_Number : <input type="text" name="Center_Number">'{{LastNumber}}' 로 등록하십시오. <br>
+            Location : <input type="text" name="Location"><br>
+            Many_Pet : <input type="text" name="Many_Pet"><br>
+            Grade : <input type="text" name="Grade"><br>
+            Pet_Hospital : <input type="text" name="Pet_Hospital"><br>
+            <input type='submit' value='OK' onClick="location.href='OK'">
+        </form>
+        <input type='button' value='Cancel' onClick="location.href='home'">
+
     </body>
 </html>
