@@ -8,7 +8,7 @@
             div {
                 text-decoration: none;
                 color: mediumaquamarine; 
-                font-size:3vw;
+                font-size:20px;
                 border: 10px solid white;
             }
         </style>
@@ -18,7 +18,8 @@
         분양 받고자 하는 유기견의 번호를 입력하세요.
         <form action = "{{url_for('Pet')}}" method='POST'> 
             <input type="text" name="Pet Number"> 
-            <input type='submit' value='OK'> 
+            <input type='submit' value='OK'>
+            <input type='button' value='Cancel' onClick="location.href='home'"> 
         </form>
         {% for i in Pet_List%}
         <div>

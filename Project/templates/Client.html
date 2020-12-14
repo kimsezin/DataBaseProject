@@ -6,20 +6,22 @@
                 background-color: #808080;         
             }
         </style>
-        <title>Client Register</title>
+        <title>분양자 등록</title>
     </head>
     <body>
-        <h1>Client Register</h1>
+        <h1>분양자 등록</h1>
+        --!! 분양자로 등록되어있지 않다면 다음과 같은 절차를 거쳐 등록해 주세요. !!--<br>
         <form action = "{{url_for('Client')}}" method='POST'>
-            Phone Number : <input type="text" name="Phone Number"> <br>
-            Experience : <input type="text" name="Experience"> Y/N<br>
-            Have Many : <input type="text" name="Have Many"><br>
-            Your Age : <input type="text" name="Age"><br>
-            Your location : <input type="text" name="Location"><br>
-            Center Number : <input type="text" name="Center Number">
+            핸드폰번호 : <input type="text" name="Phone Number"> <br>
+            분양경험 : <input type="text" name="Experience">  (Y/N)<br>
+            보유 반려동물 수 : <input type="text" name="Have Many"><br>
+            나이 : <input type="text" name="Age"><br>
+            지역 : <input type="text" name="Location"><br>
+            유기견 보호센터 번호 : <input type="text" name="Center Number"> <br>
             <input type='submit' value='OK' onCLick="location.href='Pet'"> 
-        </form>
-        <input type='submit' value='Cancel' onClick="location.href='home'">
+            <input type='button' value='Cancel' onClick="location.href='home'">
+        </form> <br><br><br>
+        <input type='submit' value='유기견 목록 확인하기' onCLick="location.href='Pet'"> <br>
         
     </body>
 </html>

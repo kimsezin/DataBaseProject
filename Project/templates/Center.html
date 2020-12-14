@@ -5,20 +5,29 @@
             body { 
                 background-color: #808080;         
             }
+            div {
+                margin-top:20px;
+            }
         </style>
-        <title>Center Register</title>
+        <title>유기견 보호센터 등록</title>
     </head>
     <body>
-        <h1>Center Register</h1> <br>
-        <form action = "{{url_for('Center', LastNumber=LastNumber)}}" method="POST">
-            Center_Number : <input type="text" name="Center_Number">'{{LastNumber}}' 로 등록하십시오. <br>
-            Location : <input type="text" name="Location"><br>
-            Many_Pet : <input type="text" name="Many_Pet"><br>
-            Grade : <input type="text" name="Grade"><br>
-            Pet_Hospital : <input type="text" name="Pet_Hospital"> Y/N <br>
-            <input type='submit' value='OK' onClick="location.href='OK'">
-        </form>
-        <input type='button' value='Cancel' onClick="location.href='home'">
+        
+        <h1>유기견 보호센터 등록</h1> <br>
+        <input type='submit' value='유기견 등록하기' onCLick="location.href='Pet_Register'"> <br>
+        --!! Center가 등록되지 않았다면 다음과 같은 절차를 거쳐 등록해 주세요. !!--<br>
+        <div>
+            <form action = "{{url_for('Center', LastNumber=LastNumber)}}" method="POST">
+                센터 번호 : <input type="text" name="Center_Number">'{{LastNumber}}' 로 등록하십시오. <br>
+                지역 : <input type="text" name="Location"><br>
+                보유 유기견 수 : <input type="text" name="Many_Pet"><br>
+                평점 : <input type="text" name="Grade"><br>
+                연결 동물병원 여부 : <input type="text" name="Pet_Hospital"> Y/N <br>
+                <input type='submit' value='OK' onClick="location.href='OK'">
+                <input type='button' value='Cancel' onClick="location.href='home'">
+            </form>
+        </div>
+       
 
     </body>
 </html>
