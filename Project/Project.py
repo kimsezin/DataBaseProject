@@ -18,15 +18,22 @@ def Client():
     db.row_factory = sqlite3.Row
     if request.method == 'POST':
         db.execute(
-            'Insert into Client values(?,?,?,?,?);',
+            'Insert into Client values(?,?,?,?,?,?);',
             (request.form['Phone Number'],request.form['Experience'],
             request.form['Have Many'], request.form['Age'],
-            request.form['Location'])
+            request.form['Location'], request.form['Center Number'])
+        )
+        db.execute(
+            'Insert into Apply values(?,?);',
+            (request.form['Center Number'], request.form['Phone Number'])
         )
         db.commit()
-
+        Pet_List = db.execute(
+        'select *'
+        ' from Pet'
+        ).fetchall()
         db.close()
-        return render_template('Pet.html')
+        return render_template('Pet.html',Pet_List=Pet_List)
     else:
 
         return render_template('Client.html')
@@ -63,22 +70,29 @@ def Center():
 def OK():
     return render_template('OK.html')
 
-@app.route("/Pet")
+@app.route("/Pet", methods=['GET','POST'])
 def Pet():
-    # db = sqlite3.connect('/home/kimsezin/DatabaseProject/Project/PetShop.db')
-    # db.row_factory = sqlite3.Row
+    db = sqlite3.connect('/home/kimsezin/DatabaseProject/Project/PetShop.db')
+    db.row_factory = sqlite3.Row
+    if request.method == 'POST':
+        db.execute(
+            'delete from Pet where Pet_Number = ?;',
+            (request.form['Pet Number'])
+        )
+        db.commit()
+        return render_template('PetOK.html')
+    else:
+        Pet_List = db.execute(
+            'select *'
+            ' from Pet'
+        ).fetchall()
 
-    # items = db.execute(
-    #     'select *'
-    #     ' from Pet'
-    # )
+        db.close()
+        return render_template('Pet.html', Pet_List=Pet_List)
 
-    # Pet_List = ""
-    # for item in items :
-    #     Pet_List += item[Pet_Number]
-        
-    return render_template('Pet.html')
+    
+    
 if __name__ == "__main__":
     app.debug=True
-    app.run(host='127.0.0.1',port=5001)
+    app.run(host='127.0.0.1',port=5000)
     
