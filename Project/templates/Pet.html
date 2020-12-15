@@ -15,11 +15,12 @@
     </head>
     <body>
         <h1>Pet List</h1>
-        분양 받고자 하는 유기견의 번호를 입력하세요.
+        
+        <br> 분양 받고자 하는 유기견의 번호를 입력하세요.
         <form action = "{{url_for('Pet')}}" method='POST'> 
             <input type="text" name="Pet Number"> 
             <input type='submit' value='OK'>
-            <input type='button' value='Cancel' onClick="location.href='home'"> 
+            <input type='button' value='Cancel' onClick="location.href='home'">
         </form>
         {% for i in Pet_List%}
         <div>

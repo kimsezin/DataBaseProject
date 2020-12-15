@@ -57,7 +57,7 @@ def Center():
         LastNumber_item = db.execute(
             'select Center_Number '
             ' from (select Center_Number from Center order by Center_Number desc limit 1)'
-            ' order by Center_Number asc'
+            
         ).fetchone()
     
         LastNumber = ord(LastNumber_item['Center_Number'])-47  
@@ -91,6 +91,8 @@ def Pet():
         db.close()
         return render_template('Pet.html', Pet_List=Pet_List)
 
+    
+
 @app.route("/Pet_Register", methods=['POST', 'GET'])
 def Pet_Register():
     db = sqlite3.connect('/home/kimsezin/DatabaseProject/Project/PetShop.db')
@@ -111,7 +113,7 @@ def Pet_Register():
         LastNumber_item = db.execute(
             'select Pet_Number '
             ' from (select Pet_Number from Pet order by Pet_Number desc limit 1)'
-            ' order by Pet_Number asc'
+            
         ).fetchone()
 
         LastNumber = ord(LastNumber_item['Pet_Number'])-47 
